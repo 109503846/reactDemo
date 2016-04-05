@@ -92,6 +92,7 @@ export default class UserInfo extends React.Component {
                             onSelect={(date)=>this.handleSelect(date)}
                             format="YYYY-MM-DD"
                             ref="dat"
+                            readOnly
                         />
                     </Col>
                 </Grid>
