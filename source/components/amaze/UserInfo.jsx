@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Form,Input,ButtonToolbar,Button,FormGroup,DateTimeInput,Grid,Col} from 'amazeui-react';
+import {Form,Input,ButtonToolbar,Button,FormGroup,DateTimeInput,Grid,Col,Selected} from 'amazeui-react';
 import DateUtil from '../common/DateUtil';
 export default class UserInfo extends React.Component {
     constructor(props) {
@@ -63,9 +63,19 @@ export default class UserInfo extends React.Component {
         }else{
             this.refs.dat.handleSelect(new DateUtil().getNowFormatDate());
         }
+        //this.refs.sexSel.setValue(this.state.sex);
     }
 
+
+
     render() {
+        var props = {
+            name: 'selected',
+            data: [{value: 'F', label: '男'},{value: 'M', label: '女'}],
+            onChange: function(value) {
+                console.log('当前值为：', value);
+            },
+        };
         return (
             <Form horizontal className="am-form" target="_blank">
                 <Grid collapse fixed className="doc-g">
@@ -82,6 +92,12 @@ export default class UserInfo extends React.Component {
                         <option value="F">男</option>
                         <option value="M">女</option>
                     </Input>
+                    </Col>
+                </Grid>
+                <Grid collapse fixed className="doc-g">
+                    <Col sm={2}><label>性别 </label></Col>
+                    <Col sm={10}>
+                        <Selected value={this.state.sex} ref="sexSel"  {...props} />
                     </Col>
                 </Grid>
                 <Grid collapse fixed className="doc-g">

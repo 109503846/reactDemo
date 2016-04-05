@@ -13,10 +13,16 @@ export default class UserList extends React.Component {
     render() {
         let self=this;
         let rows=[];
-        this.props.users.forEach(function(user,index){
+        let className="";
+        this.props.users.forEach((user,index)=>{
+            if(user.id==this.props.selectIndex) {
+                className="am-active";
+            }else{
+                className="";
+            }
             rows.push(
                 /*onClick={this.onSelect.bind(self, user}*/
-                <tr key={user.id+index}  onClick={()=>self.onSelect(user)}>
+                <tr key={user.id+index}  className={className}  onClick={()=>self.onSelect(user)}>
                     <td>{user.name}</td>
                     <td>{user.sex=="F"?"男":"女"}</td>
                     <td>{user.birthday}</td>

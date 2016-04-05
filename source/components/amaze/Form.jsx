@@ -78,7 +78,7 @@ export default class Form extends React.Component {
                     <Col sm={8}><UserInfo user={this.state.user}  saveUser={(user)=>this.onSave(user)} deleteUser={()=>this.onDelete()}/></Col>
                 </Grid>
                 <Container>
-                    <UserList users={this.state.users} onSelect={(user)=>this.onSelect(user)}/>
+                    <UserList selectIndex={this.state.user&&this.state.user.id} users={this.state.users} onSelect={(user)=>this.onSelect(user)}/>
                 </Container>
             </div>
         );
