@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Form,Input,ButtonToolbar,Button,FormGroup,DateTimeInput,Grid,Col,Selected} from 'amazeui-react';
+import {Form,Input,ButtonToolbar,Button,FormGroup,DateTimeInput,Grid,Col,Icon} from 'amazeui-react';
 import DateUtil from '../common/DateUtil';
 export default class UserInfo extends React.Component {
     constructor(props) {
@@ -18,14 +18,16 @@ export default class UserInfo extends React.Component {
         this.state = null;
         this.setState({
             ref: true,
+            sex:"F"
         });
     }
 
     save() {
+        let id= this.state.id;
         let name = this.state.name;
         let birthday = this.state.birthday||this.refs.dat.state.value;
         let sex = this.state.sex||this.refs.sex.getValue();
-        let user = {id: this.state.id, name: name, birthday: birthday, sex: sex};
+        let user = {id, name, birthday, sex};
         this.props.saveUser(user);
     }
 
@@ -66,6 +68,7 @@ export default class UserInfo extends React.Component {
     }
 
     render() {
+        let btnAfter=<Button  onClick={()=>{this.refs.dat.handleClick()} } ><Icon icon="calendar" /></Button>;
         return (
             <Form horizontal className="am-form" target="_blank">
                 <Grid collapse fixed className="doc-g">
@@ -93,6 +96,7 @@ export default class UserInfo extends React.Component {
                             format="YYYY-MM-DD"
                             ref="dat"
                             readOnly
+                            btnAfter={btnAfter}
                         />
                     </Col>
                 </Grid>

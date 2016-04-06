@@ -30,7 +30,7 @@ export default class UserList extends React.Component {
             );
         });
         return (
-            <Table>
+            <Table hover>
                 <thead>
                 <tr>
                     <th>名字</th>
